@@ -1,0 +1,441 @@
+/* =========================
+   RIR fargeprofil (Eythor)
+   Hovedfarger og tilleggsfarger
+   ========================= */
+:root {
+  /* Hovedfarger fra manualen */
+  --rir-havdyp:  #002f3f; /* Pantone 548 C */
+  --rir-himmel:  #edf6ff; /* Pantone 649 C */
+  --rir-organisk:#bfe0c4; /* Pantone 621 C */
+
+  /* Tilleggsfarger */
+  --rir-gronn:   #00604b; /* Pantone 7728 C */
+  --rir-gul:     #fff8b7; /* Pantone Yellow 0131 C */
+  --rir-beige:   #ffcdb5; /* Pantone 162 C */
+  --rir-lilla:   #704399; /* Pantone 266 C */
+
+  /* Avledede / systemvariabler */
+  --rir-primary:        var(--rir-havdyp);
+  --rir-primary-strong: #001c25; /* dypere havdyp til rammer/hover */
+  --rir-secondary:      var(--rir-gul);
+  --rir-secondary-weak: #fffbd6; /* lysere gul til hover/gradient */
+
+  --rir-bg:       var(--rir-himmel);   /* hovedbakgrunn */
+  --rir-surface:  #ffffff;             /* kort/panel bakgrunn (ren hvit for kontrast og renhet) */
+  --rir-text:     var(--rir-havdyp);   /* primær tekst */
+  --rir-muted:    #4a6570;             /* nedtonet tekst på lyse bakgrunner */
+
+  /* Nøytralt/linjer/skyggar */
+  --rir-line:   rgba(0,0,0,0.12);
+  --shadow-1:   0 4px 12px rgba(0,0,0,0.15);
+  --shadow-2:   0 4px 12px rgba(0,0,0,0.30);
+
+  /* Statusfarger – profiljustert */
+  --ok:           var(--rir-gronn);
+  --ok-hover:     #004c3b;
+  --danger:       #e53935;   /* Bytt om manualen definerer annet */
+  --danger-hover: #c62828;
+
+  /* Tabellfarger (UU: tydelig kontrast) */
+  --table-head-bg:   var(--rir-havdyp);
+  --table-head-text: #ffffff;
+  --table-alt:       rgba(0,0,0,0.04);  /* diskret zebra */
+  --table-hover:     rgba(0,0,0,0.08);
+}
+
+/* ====== GLOBALT ====== */
+body {
+    font-family: Arial, sans-serif;
+    background: url("Sirkler.png") no-repeat center center fixed;
+    background-size: cover; /* Sørger for at bildet fyller hele skjermen */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--rir-text);
+}
+
+/* ====== HEADER ====== */
+header {
+    position: relative;
+    background-color: var(--rir-surface);
+    width: 100%;
+    max-width: 700px;
+    padding: 18px 0;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-2);
+    color: var(--rir-text);
+}
+
+header h1 {
+    margin: 0;
+    color: var(--rir-primary);
+    font-size: 1.8rem;
+}
+
+#backButton {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+#backButton img {
+    width: 70px;
+    cursor: pointer;
+}
+
+/* ====== KONTROLLPANEL ====== */
+.table-module .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    max-width: 450px;
+    width: 100%;
+    margin: auto;
+    background: rgba(0,47,63,0.08); /* havdyp som glass over lys bakgrunn */
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--rir-text);
+    border: 1px solid rgba(0,47,63,0.12);
+}
+
+.table-module label {
+    font-weight: bold;
+    color: var(--rir-text);
+}
+
+.table-module input[type="number"], .table-module select {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--rir-line);
+    text-align: center;
+    font-size: 1rem;
+    color: var(--rir-text);
+    background: #fff;
+}
+
+.table-module select {
+    width: 100%;
+    max-width: 250px;
+}
+
+/* Plus/minus */
+.plusminus {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.plusminus button {
+    flex: 1;
+    font-size: 1.5rem;
+    padding: 10px 0;
+    background: var(--rir-surface);
+    color: var(--rir-primary);
+    border: 1px solid var(--rir-line);
+    border-radius: 8px;
+    transition: .2s;
+}
+.plusminus button:hover {
+    background: var(--rir-organisk);
+}
+
+/* Sett mengde-knapp */
+.table-module button[class="setStackVolume"] {
+    padding: 12px 18px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: var(--rir-secondary);     /* gul */
+    color: var(--rir-primary);                  /* mørk tekst for kontrast */
+    border: 1px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.table-module button[class="setStackVolume"]:hover {
+    background-color: var(--rir-secondary-weak);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* ====== TABELL ====== */
+.table-wrapper {
+    width: 100%;
+    max-width: 700px;
+    overflow-x: auto;
+    margin: auto;
+}
+
+.logTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--rir-surface);
+    color: var(--rir-text);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow-2);
+    margin: auto;
+}
+
+.logTable th,
+.logTable td {
+    border: 1px solid var(--rir-primary-strong);
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.logTable th {
+    background-color: var(--table-head-bg);
+    color: var(--table-head-text);
+}
+
+.logTable tr:nth-child(even) {
+    background-color: var(--table-alt);
+}
+
+.logTable tr:hover {
+    background-color: var(--table-hover);
+}
+
+/* ====== KNAPPER ====== */
+.action-btn {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+/* Logg-knapp – RIR-grønn */
+.log-btn {
+    background-color: var(--ok);
+    color: #fff;
+}
+.log-btn:hover {
+    background-color: var(--ok-hover);
+    transform: translateY(-2px);
+}
+
+/* Slett-knapp – beholder rød til feilhendelser (kan byttes om manualen spesifiserer) */
+.delete-btn {
+    background-color: var(--danger);
+    color: #fff;
+    margin-left: 6px;
+}
+.delete-btn:hover {
+    background-color: var(--danger-hover);
+    transform: translateY(-2px);
+}
+
+.add-row-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.add-row-btn {
+    padding: 14px 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--rir-secondary-weak), var(--rir-secondary));
+    color: var(--rir-primary);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.25s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+.add-row-btn::before {
+    content: "+";
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.add-row-btn:hover {
+    background: linear-gradient(135deg, var(--rir-secondary), var(--rir-secondary-weak));
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+.add-row-btn:active {
+    transform: translateY(-1px) scale(0.99);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+
+/* ====== RESPONSIV ====== */
+@media (max-width: 900px) {
+    header h1 { font-size: 1.5rem; }
+    #backButton img { width: 60px; }
+}
+
+@media (max-width: 600px) {
+    body { padding: 5px; }
+    header { padding: 12px 0; }
+    header h1 { font-size: 1.3rem; }
+    .table-module .controls { width: 95%; padding: 10px; }
+    .logTable th, .logTable td { padding: 8px 6px; font-size: 0.85rem; }
+    .action-btn { min-width: 50px; }
+    .plusminus button { font-size: 1.3rem; padding: 8px 0; }
+    .table-module button[onclick="setStackVolume()"] { font-size: 0.95rem; padding: 10px 14px; }
+}
+
+/* ====== LOGG STILER (NY) ====== */
+.log-container {
+    width: 250px;
+    height: 300px;
+
+    position: absolute;
+    left: 100px;
+    top: 100px;
+
+    border-radius: 20px;
+    border: 2px solid var(--rir-text);
+
+    background: #f3f3f3;
+    overflow: hidden;
+
+    box-shadow: var(--shadow-1);
+
+    z-index: 1000;
+}
+
+/* Innholdet */
+.log-object {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+
+    background: #e7e7e7;
+    border-radius: 20px;
+
+    overflow-y: auto; /* Kun vertikal scroll */
+    box-sizing: border-box;
+
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Midtstill toggle-knappen */
+#toggleControls {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 14px 22px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 12px;
+    background: var(--rir-surface);
+    color: var(--rir-primary);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: 0.25s;
+}
+#toggleControls:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+/* Mer luft inni kontrollpanelet */
+#controlsBox {
+    padding: 25px !important;
+    gap: 20px !important;
+}
+
+/* Alle inputs + select mer luft */
+#controlsBox input,
+#controlsBox select {
+    padding: 12px 14px !important;
+    font-size: 1.1rem;
+}
+
+/* Pluss/minus-knapper større luft */
+#controlsBox .plusminus {
+    gap: 20px !important;
+}
+#controlsBox .plusminus button {
+    padding: 14px 0 !important;
+    font-size: 1.7rem !important;
+}
+/* ================= ACTION ICONS ================= */
+.table-wrapper {
+    position: relative;
+}
+
+.mouse-only .action-icons {
+    /* position: absolute; */
+    /* top: 6px;          /* nær toppen av raden */
+    /* right: 10px; */ 
+    display: flex;
+    gap: 6px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none; /* slik at de ikke blokkerer rad-hover */
+}
+
+.touch-only .action-icons {
+    display: flex;
+    gap: 6px;
+    opacity: 1;
+    pointer-events: none; /* slik at de ikke blokkerer rad-hover */
+}
+
+.logTable tr:hover .action-icons {
+    opacity: 1;
+    pointer-events: auto; /* aktiv når synlig */
+}
+
+.action-icons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--rir-primary);
+    transition: transform 0.2s, color 0.2s;
+}
+
+.action-icons button:hover {
+    transform: scale(1.2);
+    color: var(--ok);
+}
+
+.delete-icon:hover {
+    color: var(--danger);
+}
+/* Bare topp-rad, siste kolonne (Handling) */
+.logTable th:last-child {
+    background-color: var(--rir-gul);
+    color: var(--rir-primary); /* mørk tekst for kontrast */
+}
+/* Navneboks ved Legg til rad-knappen */
+.row-name-input {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--rir-line);
+    font-size: 1rem;
+    color: var(--rir-text);
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    margin-right: 10px;
+    width: 180px;
+    transition: 0.25s;
+}
+
+.row-name-input:focus {
+    outline: none;
+    border-color: var(--rir-primary);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}

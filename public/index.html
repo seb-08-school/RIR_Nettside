@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Forside.css">
+    <title>RIR Lagerstyring</title>
+</head>
+<body>
+
+    <header>
+        <h1>RIR lagerstyring</h1>
+    </header>
+
+    <main>
+        <!-- Vanlige forsideknapper -->
+        <div class="class-container">
+        </div>
+        <!-- ====== Ny Klasse seksjon lagt INNE i forsiden ====== -->
+    </main>
+
+    <div class="form-container">
+        <h2>Legg til ny klasse</h2>
+
+        <form id="newClassForm">
+            <label for="className">Navn på klasse:</label>
+            <input type="text" id="className" maxlength=30 required>
+
+            <button type="submit" class="btn">Legg til klasse</button>
+        </form>
+
+        <div id="message"></div>
+    </div>
+    
+
+    <!-- ====== Script ====== -->
+    <script src="js/forsideScript.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dunk-registrering</title>
+<link rel="stylesheet" href="Dunker.css">
+</head>
+<body>
+
+<header>
+    <a id="backButton">
+        <img src="RIR_logo.png" alt="Tilbake">
+    </a>
+    <h1>Dunk-oversikt</h1>
+</header>
+
+<main>
+    <div class="table-module">
+        <div class="controls">
+            <label for="sizeSelectInput" class="sizeLabel">Velg rad:</label>
+            <select id="sizeSelectInput" name="sizeSelectInput" class="sizeSelect"></select>
+
+            <label for="changeAmountInput">Antall stabler:</label>
+            <input id="changeAmountInput" type="number" name="changeAmountInput" class="changeAmount" value="1" min="1">
+
+            <div class="plusminus">
+                <button class="pluss">+</button>
+                <button class="minus">-</button>
+            </div>
+
+            <label for="stackVolumeInput">Mengde per stabel:</label>
+            <input type="number" id="stackVolumeInput" name="stackVolumeInput" class="stackVolume" value="0" min="0">
+            <button class="setStackVolume">Sett mengde</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="logTable">
+                <tr>
+                    <th>Navn/Størrelse</th>
+                    <th>Mengde per stabel</th>
+                    <th>Beholdning i stabler</th>
+                </tr>
+            </table>
+        </div>
+        <div class="add-row-container">
+            <input type="text" id="rowNameInput" class="row-name-input" maxlength=30 placeholder="Navn på raden">
+            <button class="add-row-btn" id="addRowBtn">Legg til rad</button>
+        </div>
+
+    </div>
+</main>
+
+<script src="js/dunkerScript.js"></script>
+
+</body>
+</html>
