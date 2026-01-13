@@ -139,21 +139,8 @@ const classEvent = (event, classObj, element) => {
     removeListeners()
     window.location.href = "/public/Dunker.html";
 }
-const eventtypebutton = () => {
-  fetch("https://rir-nettside.azurestaticapps.net/api/addRow", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ navn: "Testklasse" })
-  })
-  .then(res => res.json())
-  .then(console.log)
-  .catch(console.error);
-}
 
 document.addEventListener("DOMContentLoaded", () => {
-    const buttonclicker = document.querySelector(".testButton");
-    buttonClicker.addEventListener("click", eventtypebutton());
-    
     let handler = [];
     const classForm = document.querySelector("#newClassForm");
     
