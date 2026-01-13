@@ -1,0 +1,18 @@
+{
+  "routes": [
+    {
+      "route": "/*",
+      "headers": {
+        "cache-control": "max-age=3600",             // Cache i 1 time
+        "x-content-type-options": "nosniff",         // Hindrer MIME-type sniffing
+        "content-security-policy": "frame-ancestors 'self'", // Stopper clickjacking
+        "x-xss-protection": "1; mode=block"          // XSS-beskyttelse (valgfritt)
+      }
+    }
+  ],
+  "responseOverrides": {},
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/api/*"]
+  }
+}
