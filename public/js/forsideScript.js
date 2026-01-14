@@ -21,7 +21,7 @@ const deleteClass = (event, element) => {
     const title = element.querySelector(".class-title");
     const confirmDelete = confirm(`Er du sikker på at du vil slette klassen: ${title.textContent}?`);
     if (confirmDelete) {
-        fetch("/api/deleteClass", {
+        fetch("../api/deleteClass", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -103,7 +103,7 @@ const formEvent = (event, formObj, classes) => {
     newClass.addEventListener("click", handler);
     addListener(newClass, "click", handler);
 
-    fetch("/api/lagreKlasser", {
+    fetch("../api/lagreKlasser", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let handler = [];
     const classForm = document.querySelector("#newClassForm");
     
-    fetch("/api/henteKlasser")
+    fetch("../api/henteKlasser")
     .then(response => response.json())
     .then(serverClasses => {
         classes = serverClasses;
