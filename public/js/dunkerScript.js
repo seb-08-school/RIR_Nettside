@@ -424,7 +424,7 @@ const locationChanger = (e) => {
     e.preventDefault();
     removeListeners();
     localStorage.removeItem("classInfo");
-    window.location.href = "/public/index.html";
+    window.location.href = "/index.html";
 }
 
 function isTouchOnly() {
