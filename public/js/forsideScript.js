@@ -137,7 +137,7 @@ const classEvent = (event, classObj, element) => {
 
     localStorage.setItem("classInfo", JSON.stringify(classObj));
     removeListeners()
-    window.location.href = "/public/Dunker.html";
+    window.location.href = "/Dunker.html";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
