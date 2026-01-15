@@ -24,7 +24,7 @@ module.exports = async function (context, req) {
     } catch (err) {
         context.res = {
             status: 500,
-            body: "hei"
+            body: "Internal Server Error"
         };
     }
 };
