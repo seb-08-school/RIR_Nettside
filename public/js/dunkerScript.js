@@ -337,7 +337,8 @@ const addRow = () => {
 
     const row = table.insertRow();
 
-    const classInfo = JSON.parse(localStorage.getItem("classInfo")) || [];
+   const classInfo = JSON.parse(localStorage.getItem("classInfo")) || { info: [] };
+
     const oldClassInfo = JSON.parse(JSON.stringify(classInfo));
 
     const name = sanitizeId(nameInput.value.trim());
