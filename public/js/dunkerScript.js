@@ -365,7 +365,7 @@ const addRow = () => {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify([rowList, oldClassInfo])
+        body: JSON.stringify({ row: rowList, klasse: oldClassInfo})
     })
     .then(response => {
         if (!response.ok) {
